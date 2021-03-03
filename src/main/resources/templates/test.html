@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    안녕하세요
+
+    <button id ="btn">클릭</button>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+
+        var obj ={
+            name : "안녕",
+            email : "gege@gmail.com"
+        }
+        $('#btn').click(function(){
+            //method1();
+            // method2();
+            method3();
+        });
+
+        function method1(){
+            $.ajax({
+                url : "/api/test1",
+                method : "post",
+                data : obj,
+            }).done(function(data){
+                console.log(data);
+            }).fail(function(error){
+                console.log(error);
+            })
+        }
+        function method2(){
+            $.ajax({
+                url : "/api/test2",
+                method : "post",
+                data : JSON.stringify(obj),
+                contentType : "application/json"
+            }).done(function(data){
+                console.log(data);
+            }).fail(function(error){
+                console.log(error);
+            })
+        }
+        function method3(){
+            $.ajax({
+                url : "/api/test3",
+                method : "post",
+                data : JSON.stringify(obj),
+                contentType : "application/json"
+            }).done(function(data){
+                console.log(data);
+            }).fail(function(error){
+                console.log(error);
+            })
+        }
+
+    </script>
+</body>
+</html>
