@@ -18,10 +18,54 @@
             email : "gege@gmail.com"
         }
         $('#btn').click(function(){
+            // method0();
+            // method0_J1();
+            method0_J2();
             //method1();
             // method2();
-            method3();
+            // method3();
         });
+
+        
+        function method0(){
+            $.ajax({
+                url : "/api/test0",
+                method : "post",
+                data : obj,
+            }).done(function(data){
+                console.log(data);
+            }).fail(function(error){
+                console.log(error);
+            })
+        }
+
+        function method0_J1(){
+            $.ajax({
+                url : "/api/test0_J1",
+                method : "post",
+                data : JSON.stringify(obj),
+                contentType : "application/json"
+            }).done(function(data){
+                console.log(data);
+            }).fail(function(error){
+                console.log(error);
+            })
+        }
+
+        function method0_J2(){
+            $.ajax({
+                url : "/api/test0_J2",
+                method : "post",
+                data : {
+                    jsonBody : JSON.stringify(obj)
+                },
+                contentType : "application/json"
+            }).done(function(data){
+                console.log(data);
+            }).fail(function(error){
+                console.log(error);
+            })
+        }
 
         function method1(){
             $.ajax({

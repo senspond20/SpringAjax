@@ -1,9 +1,63 @@
 # AJAX
 
+# HttpServletRequest
 
+## Case 0
++ RestController
 
+```java
+@PostMapping("/api/test0")
+public Object method0(HttpServletRequest request){
+    
+    String name = request.getParameter("name");
+    String email = request.getParameter("email");
+    System.out.println(name);
+    System.out.println(email);
+    // return Arrays.asList(name,email);
+    Map<String,Object> resultMap = new HashMap<String,Object>();
+    resultMap.put("name", name);
+    resultMap.put("email", email);
+    return resultMap;
+}
+```
++ view
+```html
+<button id ="btn">클릭</button>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+```
 
-## Case 1
+```js
+var obj ={
+    name : "안녕",
+    email : "gege@gmail.com"
+}
+$('#btn').click(function(){
+    method1();
+});
+
+function method0(){
+    $.ajax({
+        url : "/api/test0",
+        method : "post",
+        data : obj,
+    }).done(function(data){
+        console.log(data);
+    }).fail(function(error){
+        console.log(error);
+    })
+}
+```
+
+```xml
+<!-- https://mvnrepository.com/artifact/org.json/json -->
+<dependency>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>20180813</version>
+</dependency>
+```
+
+# Dto
 
 + Dto
 ```java
@@ -14,6 +68,7 @@ public class TestDto {
 }
 ```
 
+## Case 1 
 + RestController
 
 ```java
@@ -101,6 +156,8 @@ function method2(){
     })
 }
 ```
+
+# Map
 
 ## Case3
 + Case2번과 동일하게 Map으로 받는 방법
